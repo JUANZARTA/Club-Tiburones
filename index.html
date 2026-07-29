@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Club Tiburones — Escuela de Natación</title>
+  <meta name="description" content="Club Tiburones: escuela de natación para todas las edades. Escuelita, infantil, juvenil, adultos y competencia.">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%A6%88</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Orden importa: variables primero (paleta/tipografía), después el resto -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main>
+
+    <!-- ================= HERO ================= -->
+    <section id="inicio" class="hero">
+      <div class="bubbles" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="container hero__inner">
+        <span class="badge">Natación · Formación · Comunidad</span>
+        <h1>Sumate al <span>Club Tiburones</span></h1>
+        <p>Escuela de natación para todas las edades. Entrená como un tiburón: técnica, constancia y equipo, dentro y fuera del agua.</p>
+        <div class="hero__actions">
+          <a href="#contacto" class="btn btn--accent">Inscribite ahora</a>
+          <a href="#nosotros" class="btn btn--outline">Conocé el club</a>
+        </div>
+      </div>
+
+      <div class="hero__wave wave-divider wave-divider--to-surface" aria-hidden="true">
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+          <path d="M0,40 C240,100 480,0 720,40 C960,80 1200,20 1440,50 L1440,100 L0,100 Z"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ================= NOSOTROS ================= -->
+    <section id="nosotros" class="section">
+      <div class="container about">
+        <div class="about__media" data-reveal>
+          <img src="assets/images/about-shark.jpg" alt="Tiburón nadando en aguas profundas, símbolo del espíritu del club" loading="lazy">
+        </div>
+
+        <div class="about__text" data-reveal>
+          <span class="eyebrow">Quiénes somos</span>
+          <h2>Más que un club, un equipo</h2>
+          <p><!-- TODO: reemplazar con el texto real que defina el club --> Somos un club de natación con años formando nadadores de todas las edades, con foco en la técnica, la disciplina y el disfrute del deporte.</p>
+
+          <div class="about__stats">
+            <div class="about__stat"><strong>+00</strong><span>Años de trayectoria</span></div>
+            <div class="about__stat"><strong>+00</strong><span>Socios activos</span></div>
+            <div class="about__stat"><strong>05</strong><span>Categorías</span></div>
+          </div>
+
+          <div class="about__pillars">
+            <div class="pillar">
+              <h4>Misión</h4>
+              <p><!-- TODO: completar con el club --> Formar nadadores con valores, acompañando cada etapa dentro y fuera del agua.</p>
+            </div>
+            <div class="pillar">
+              <h4>Visión</h4>
+              <p><!-- TODO: completar con el club --> Ser el club de referencia de la zona en formación y competencia de natación.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CATEGORÍAS ================= -->
+    <section id="categorias" class="section section--alt">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <span class="eyebrow">Para todas las edades</span>
+          <h2>Categorías y disciplinas</h2>
+          <p>Un lugar para cada etapa: desde los primeros largos hasta la competencia federada.</p>
+        </div>
+
+        <div class="categories-grid">
+          <div class="card" data-reveal>
+            <div class="card__icon" aria-hidden="true">🐣</div>
+            <h3>Escuelita</h3>
+            <p>Iniciación acuática para los más chicos, de forma lúdica y segura.</p>
+          </div>
+          <div class="card" data-reveal>
+            <div class="card__icon" aria-hidden="true">🏊</div>
+            <h3>Infantil</h3>
+            <p>Técnica de los 4 estilos y primeras experiencias de competencia.</p>
+          </div>
+          <div class="card" data-reveal>
+            <div class="card__icon" aria-hidden="true">🔥</div>
+            <h3>Juvenil</h3>
+            <p>Entrenamiento físico y técnico orientado a resultados.</p>
+          </div>
+          <div class="card" data-reveal>
+            <div class="card__icon" aria-hidden="true">💪</div>
+            <h3>Adultos</h3>
+            <p>Natación recreativa, perfeccionamiento y fitness acuático.</p>
+          </div>
+          <div class="card" data-reveal>
+            <div class="card__icon" aria-hidden="true">🏆</div>
+            <h3>Competencia</h3>
+            <p>Equipo federado que representa al club en torneos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HORARIOS ================= -->
+    <section id="horarios" class="section">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <span class="eyebrow">Organización</span>
+          <h2>Horarios de entrenamiento</h2>
+          <p>Turnos de referencia — a confirmar con el club antes de publicar.</p>
+        </div>
+
+        <div class="schedule" data-reveal>
+          <table>
+            <thead>
+              <tr><th>Categoría</th><th>Días</th><th>Horario</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Escuelita</td><td>Lunes y Miércoles</td><td>16:00 - 17:00</td></tr>
+              <tr><td>Infantil</td><td>Martes y Jueves</td><td>17:00 - 18:30</td></tr>
+              <tr><td>Juvenil</td><td>Lunes a Viernes</td><td>18:30 - 20:00</td></tr>
+              <tr><td>Adultos</td><td>Lunes, Miércoles y Viernes</td><td>20:00 - 21:00</td></tr>
+              <tr><td>Competencia</td><td>Lunes a Sábado</td><td>06:30 - 08:30</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INSTALACIONES ================= -->
+    <section id="instalaciones" class="section section--alt">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <span class="eyebrow">Nuestro espacio</span>
+          <h2>Instalaciones</h2>
+          <p>Pileta y espacios pensados para entrenar durante todo el año.</p>
+        </div>
+
+        <div class="gallery">
+          <div class="gallery__item gallery__item--tall" data-reveal>
+            <img src="assets/images/pool-olympic.jpg" alt="Pileta de natación de estilo olímpico" loading="lazy">
+          </div>
+          <div class="gallery__item" data-reveal>
+            <img src="assets/images/pool-indoor.jpg" alt="Pileta cubierta" loading="lazy">
+          </div>
+          <div class="gallery__item" data-reveal>
+            <img src="assets/images/pool-training.jpg" alt="Nadadores entrenando en la pileta" loading="lazy">
+          </div>
+          <div class="gallery__item" data-reveal>
+            <img src="assets/images/shark-closeup.jpg" alt="Tiburón, símbolo del club" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACTO ================= -->
+    <section id="contacto" class="section">
+      <div class="container contact">
+        <div class="contact__info" data-reveal>
+          <span class="eyebrow">Contacto</span>
+          <h2>¿Querés sumarte?</h2>
+          <p>Escribinos y te contamos todo sobre horarios, categorías y cómo empezar.</p>
+          <ul>
+            <li><span aria-hidden="true">📍</span><span>Dirección del club, ciudad</span></li>
+            <li><span aria-hidden="true">📞</span><span>+00 000 000 000</span></li>
+            <li><span aria-hidden="true">✉️</span><span>info@clubtiburones.com</span></li>
+          </ul>
+        </div>
+
+        <!-- Formulario sin backend todavía: conectar a un servicio (Formspree, EmailJS, backend propio) antes de publicar -->
+        <form class="form" data-reveal>
+          <div class="form__field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="form__field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="tu@email.com" required>
+          </div>
+          <div class="form__field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Contanos qué categoría te interesa"></textarea>
+          </div>
+          <button type="submit" class="btn">Enviar consulta</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- Componentes primero (definen los templates), main.js al final (los inyecta y agrega la interacción) -->
+  <script src="js/components/navbar.js"></script>
+  <script src="js/components/footer.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

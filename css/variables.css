@@ -1,0 +1,91 @@
+/* ==========================================================================
+   VARIABLES GLOBALES — Club Tiburones
+   Única fuente de verdad para colores, tipografía, espaciados y efectos.
+   No hardcodear valores en otros archivos: siempre usar var(--...).
+   ========================================================================== */
+
+:root {
+  /* ---- Paleta de color: azules de agua profunda + acento turquesa ---- */
+  --color-primary-900: #03045e;   /* azul noche, fondos oscuros / footer */
+  --color-primary-700: #023e7d;   /* azul principal oscuro, navbar/hero */
+  --color-primary-500: #0466c8;   /* azul principal, botones, links */
+  --color-primary-300: #48cae4;   /* azul claro, hover / detalles */
+  --color-accent-500: #00b4d8;    /* turquesa, acentos y CTAs secundarios */
+  --color-accent-300: #90e0ef;    /* turquesa claro, fondos suaves */
+  --color-accent-100: #caf0f8;    /* celeste muy claro, fondos de sección */
+
+  --color-white: #ffffff;
+  --color-black: #001219;
+
+  --color-gray-900: #1b263b;      /* texto principal */
+  --color-gray-600: #52606d;      /* texto secundario */
+  --color-gray-300: #d9e2ec;      /* bordes, separadores */
+  --color-gray-100: #f4f9fc;      /* fondo general de la página */
+
+  --color-success: #2dd881;
+  --color-warning: #ffb703;
+
+  /* Alias semánticos: usar estos en el resto del CSS */
+  --color-bg: var(--color-gray-100);
+  --color-bg-alt: var(--color-accent-100);
+  --color-surface: var(--color-white);
+  --color-text: var(--color-gray-900);
+  --color-text-muted: var(--color-gray-600);
+  --color-border: var(--color-gray-300);
+
+  --color-brand: var(--color-primary-500);
+  --color-brand-dark: var(--color-primary-700);
+  --color-brand-darker: var(--color-primary-900);
+  --color-brand-accent: var(--color-accent-500);
+
+  /* Degradé "agua" reutilizable para hero / secciones oscuras */
+  --gradient-ocean: linear-gradient(160deg, var(--color-primary-900) 0%, var(--color-primary-700) 45%, var(--color-primary-500) 100%);
+  --gradient-surface: linear-gradient(180deg, var(--color-accent-100) 0%, var(--color-white) 100%);
+
+  /* ---- Tipografía ---- */
+  --font-heading: "Poppins", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+
+  --fs-xs: 0.8rem;
+  --fs-sm: 0.9rem;
+  --fs-base: 1rem;
+  --fs-md: 1.15rem;
+  --fs-lg: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem);
+  --fs-xl: clamp(1.9rem, 1.4rem + 2vw, 2.8rem);
+  --fs-2xl: clamp(2.4rem, 1.6rem + 3.5vw, 4rem);
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --lh-tight: 1.15;
+  --lh-normal: 1.55;
+
+  /* ---- Espaciado (escala consistente) ---- */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3.5rem;
+  --space-2xl: 6rem;
+
+  --container-width: 1180px;
+  --container-padding: clamp(1.25rem, 4vw, 3rem);
+
+  /* ---- Bordes, sombras, transiciones ---- */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 2px 8px rgba(2, 62, 125, 0.08);
+  --shadow-md: 0 12px 32px rgba(2, 62, 125, 0.14);
+  --shadow-lg: 0 20px 48px rgba(1, 34, 25, 0.22);
+
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.35s ease;
+
+  --navbar-height: 76px;
+}

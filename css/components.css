@@ -1,0 +1,150 @@
+/* ==========================================================================
+   COMPONENTES — botones, cards, divisores de ola, burbujas
+   ========================================================================== */
+
+/* ---- Botones ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--primary {
+  background: var(--color-white);
+  color: var(--color-brand-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.btn--accent {
+  background: var(--color-brand-accent);
+  color: var(--color-white);
+}
+
+.btn--accent:hover {
+  background: var(--color-primary-300);
+}
+
+.btn--outline {
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+}
+
+.btn--outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-lg);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.card__icon {
+  font-size: 2.2rem;
+  margin-bottom: var(--space-md);
+}
+
+.card h3 {
+  margin-bottom: var(--space-xs);
+  font-size: var(--fs-md);
+}
+
+/* ---- Divisor de ola (SVG inline, sin dependencias externas) ---- */
+.wave-divider {
+  display: block;
+  line-height: 0;
+  transform: translateY(1px);
+}
+
+.wave-divider svg {
+  width: 100%;
+  height: auto;
+}
+
+.wave-divider--top-alt path {
+  fill: var(--color-bg-alt);
+}
+
+.wave-divider--to-surface path {
+  fill: var(--color-surface);
+}
+
+/* ---- Burbujas decorativas (puro CSS, reforzando la temática "agua") ---- */
+.bubbles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubbles span {
+  position: absolute;
+  bottom: -10%;
+  display: block;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  animation: rise 12s infinite ease-in;
+}
+
+.bubbles span:nth-child(1) { left: 8%;  width: 14px; height: 14px; animation-delay: 0s;  }
+.bubbles span:nth-child(2) { left: 22%; width: 22px; height: 22px; animation-delay: 2s;  }
+.bubbles span:nth-child(3) { left: 41%; width: 10px; height: 10px; animation-delay: 4s;  }
+.bubbles span:nth-child(4) { left: 58%; width: 18px; height: 18px; animation-delay: 1s;  }
+.bubbles span:nth-child(5) { left: 72%; width: 26px; height: 26px; animation-delay: 5s;  }
+.bubbles span:nth-child(6) { left: 87%; width: 12px; height: 12px; animation-delay: 3s;  }
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-620px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubbles span {
+    animation: none;
+    display: none;
+  }
+}
+
+/* ---- Badge / etiqueta pequeña ---- */
+.badge {
+  display: inline-block;
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  background: var(--color-accent-100);
+  color: var(--color-primary-700);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+}
