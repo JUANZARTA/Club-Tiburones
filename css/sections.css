@@ -25,18 +25,6 @@
   margin-top: var(--space-sm);
 }
 
-.page-header__back {
-  display: inline-block;
-  margin-top: var(--space-lg);
-  color: var(--color-on-dark-muted);
-  font-size: var(--fs-sm);
-  transition: color var(--transition-fast);
-}
-
-.page-header__back:hover {
-  color: var(--color-white);
-}
-
 /* ---- Hero ---- */
 .hero {
   position: relative;
