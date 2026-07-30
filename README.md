@@ -28,7 +28,9 @@ assets/
 
 ## Secciones de la página
 
-Inicio → Nosotros (con carrusel de fotos) → Misión/Visión/Valores → Logros → Categorías y etapas → Cuerpo técnico → Instalaciones → Contacto.
+Inicio → Nosotros (con carrusel de fotos) → Misión/Visión/Valores → Logros → Categorías y etapas → Cuerpo técnico → Instalaciones → Galería → Contacto.
+
+Contacto no tiene formulario: es una tarjeta centrada con el botón de WhatsApp como acción principal (así lo pidió el club, para no duplicar el canal de contacto).
 
 Todo el contenido (historia, misión, visión, valores, logros, categorías, perfil del cuerpo técnico, características de la piscina, contacto) sale de `.docs/Info.txt` y `.docs/portafolio los tiburones.pdf` que pasó el club — no hay texto inventado.
 
@@ -65,9 +67,9 @@ Todas las fotos de `assets/images/` son del club (de `.docs/fotos/` y `.docs/Log
 - `carousel-1.jpg` a `carousel-5.jpg` — carrusel de la sección Nosotros (medallas, banderas, entrenador).
 - `coach-team.jpg` — foto grupal con el cuerpo técnico, sección "Cuerpo técnico".
 - `gallery-1.jpg` a `gallery-4.jpg` — galería de la sección Instalaciones.
+- `galeria-1.jpg` a `galeria-8.jpg` — sección Galería. `galeria-1.jpg` (entrenador con nadador, trofeo y medallas) va destacada más grande a propósito (`photo-grid__item--featured`), a pedido del club.
 
 ## Pendientes para cerrar con el club
 
-- El formulario de contacto no envía nada todavía: si lo quieren mantener además del botón de WhatsApp, hay que conectarlo a un servicio (Formspree, EmailJS) o a un backend propio.
 - Confirmar que el número de WhatsApp (320 741 2254) y los links de Facebook/Instagram sean los vigentes.
 - Si el club consigue el logo en formato vectorial (SVG/AI) o con fondo transparente, reemplazar `logo.png`/`favicon.png` mejora la nitidez en pantallas grandes.
