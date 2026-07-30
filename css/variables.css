@@ -14,8 +14,9 @@
   --color-red: #f32c43;       /* rojo de marca, acentos y CTA */
   --color-sky: #2993e0;       /* azul claro, hover de botones */
 
-  /* Versión "r, g, b" del azul de marca, para armar rgba() (bordes/divisores translúcidos) */
+  /* Versión "r, g, b" del azul y el rojo de marca, para armar rgba() (bordes/divisores/glow) */
   --color-blue-rgb: 34, 85, 122;
+  --color-red-rgb: 243, 44, 67;
 
   --color-white: #ffffff;
   --color-black: #001219;
