@@ -9,7 +9,9 @@ Doble clic en `index.html` y se abre en el navegador. No necesita servidor ni in
 ## Estructura de carpetas
 
 ```
-index.html              -> única página, con todas las secciones
+index.html              -> página principal, con todas las secciones
+html/
+  galeria.html          -> página con TODAS las fotos del club (galería completa)
 css/
   variables.css         -> paleta oficial del club y tipografía (ÚNICA fuente de verdad)
   reset.css             -> normalización básica entre navegadores
@@ -31,6 +33,15 @@ assets/
 Inicio → Nosotros (con carrusel de fotos) → Misión/Visión/Valores → Logros → Categorías y etapas → Cuerpo técnico → Instalaciones → Galería → Contacto.
 
 Contacto no tiene formulario: es una tarjeta centrada con el botón de WhatsApp como acción principal (así lo pidió el club, para no duplicar el canal de contacto).
+
+La sección Galería del home es un adelanto (8 fotos + la destacada). El botón "Galería" del hero, el link "Galería" del navbar/footer y el botón "Ver galería completa" llevan todos a `html/galeria.html`, que muestra las 22 fotos que tenemos procesadas.
+
+### Páginas dentro de `html/`
+
+`galeria.html` vive en su propia carpeta porque el club pidió páginas internas separadas del home. Ojo si agregás otra página ahí:
+
+- Todos sus `<link>`/`<script src>` e imágenes (`assets/...`) llevan `../` adelante (`../css/variables.css`, `../assets/images/...`).
+- El navbar y el footer son el mismo componente (`NAVBAR_HTML`/`FOOTER_HTML`) en todo el sitio, escrito pensando que vive en la raíz. `main.js` (función `fixCrossPageAnchors`) detecta si la página está dentro de `/html/` y ahí sí corrige automáticamente los links de sección (`#nosotros` → `../index.html#nosotros`), el logo y el link de Galería. No hay que tocar nada a mano.
 
 Todo el contenido (historia, misión, visión, valores, logros, categorías, perfil del cuerpo técnico, características de la piscina, contacto) sale de `.docs/Info.txt` y `.docs/portafolio los tiburones.pdf` que pasó el club — no hay texto inventado.
 
@@ -67,7 +78,9 @@ Todas las fotos de `assets/images/` son del club (de `.docs/fotos/` y `.docs/Log
 - `carousel-1.jpg` a `carousel-5.jpg` — carrusel de la sección Nosotros (medallas, banderas, entrenador).
 - `coach-team.jpg` — foto grupal con el cuerpo técnico, sección "Cuerpo técnico".
 - `gallery-1.jpg` a `gallery-4.jpg` — galería de la sección Instalaciones.
-- `galeria-1.jpg` a `galeria-8.jpg` — sección Galería. `galeria-1.jpg` (entrenador con nadador, trofeo y medallas) va destacada más grande a propósito (`photo-grid__item--featured`), a pedido del club.
+- `galeria-1.jpg` a `galeria-11.jpg` — usadas en la Galería del home (las primeras 8) y todas en `html/galeria.html`. `galeria-1.jpg` (entrenador con nadador, trofeo y medallas) va destacada más grande a propósito (`photo-grid__item--featured`), a pedido del club.
+
+`html/galeria.html` es la única página que muestra las 22 fotos juntas (reutiliza todos los archivos de arriba). De las fotos originales en `.docs/fotos/`, quedó **una sola sin usar**: `foto (10).jpeg`, que en realidad es una captura de pantalla borrosa de un logo personal, no una foto del club.
 
 ## Pendientes para cerrar con el club
 

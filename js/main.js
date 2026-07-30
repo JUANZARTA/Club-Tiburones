@@ -6,6 +6,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   injectComponents();
+  fixCrossPageAnchors();
   setupMobileMenu();
   setupNavbarScroll();
   setupScrollReveal();
@@ -23,6 +24,36 @@ function injectComponents() {
   if (footerSlot && typeof FOOTER_HTML !== "undefined") {
     footerSlot.innerHTML = FOOTER_HTML;
   }
+}
+
+/* El navbar/footer son el mismo componente (NAVBAR_HTML/FOOTER_HTML) en
+   todas las páginas del sitio, y están escritos como si vivieran en la
+   raíz junto a index.html: rutas tipo "assets/..." y anclas tipo "#nosotros".
+   Eso funciona tal cual en index.html. Para cualquier página adentro de
+   /html/ (como galeria.html) hay que corregir esas rutas relativas:
+   - "#seccion"        -> "../index.html#seccion" (volver al home y bajar)
+   - "assets/..."       -> "../assets/..."
+   - "html/galeria.html" -> "galeria.html" (ya estamos ahí, es la misma carpeta) */
+function fixCrossPageAnchors() {
+  const inSubfolder = /\/html\//.test(location.pathname);
+  if (!inSubfolder) return;
+
+  ["#navbar-placeholder", "#footer-placeholder"].forEach((rootSelector) => {
+    const root = document.querySelector(rootSelector);
+    if (!root) return;
+
+    root.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.setAttribute("href", "../index.html" + link.getAttribute("href"));
+    });
+
+    root.querySelectorAll('img[src^="assets/"]').forEach((img) => {
+      img.setAttribute("src", "../" + img.getAttribute("src"));
+    });
+
+    root.querySelectorAll('a[href="html/galeria.html"]').forEach((link) => {
+      link.setAttribute("href", "galeria.html");
+    });
+  });
 }
 
 function setupMobileMenu() {
