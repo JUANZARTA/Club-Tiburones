@@ -1,6 +1,6 @@
-# Club Tiburones — Web base
+# Club Deportivo de Natación Tiburones — Sitio web
 
-Base de presentación para el cliente. HTML + CSS + JS puro (sin frameworks, sin build).
+Sitio con el contenido y las fotos reales del club (Popayán, Cauca). HTML + CSS + JS puro, sin frameworks ni build.
 
 ## Cómo verla
 
@@ -11,25 +11,30 @@ Doble clic en `index.html` y se abre en el navegador. No necesita servidor ni in
 ```
 index.html              -> única página, con todas las secciones
 css/
-  variables.css         -> paleta de colores y tipografía (ÚNICA fuente de verdad)
+  variables.css         -> paleta oficial del club y tipografía (ÚNICA fuente de verdad)
   reset.css             -> normalización básica entre navegadores
   base.css              -> tipografía global, contenedores, utilidades
+  components.css        -> botones, cards, carrusel, olas, burbujas, íconos
   layout.css            -> estilos del navbar y el footer
-  components.css        -> botones, cards, ola divisoria, burbujas
   sections.css          -> estilos propios de cada sección (hero, nosotros, etc.)
 js/
   components/
     navbar.js           -> template del navbar (const NAVBAR_HTML)
     footer.js           -> template del footer (const FOOTER_HTML)
-  main.js               -> inyecta navbar/footer y maneja menú mobile, scroll, animaciones
+  main.js               -> inyecta navbar/footer, carrusel, menú mobile, scroll, animaciones
 assets/
-  images/               -> fotos (ver "Sobre las imágenes" abajo)
-  icons/                -> vacía, para íconos propios si hacen falta más adelante
+  images/               -> fotos y logo reales del club (ver detalle abajo)
 ```
+
+## Secciones de la página
+
+Inicio → Nosotros (con carrusel de fotos) → Misión/Visión/Valores → Logros → Categorías y etapas → Cuerpo técnico → Instalaciones → Contacto.
+
+Todo el contenido (historia, misión, visión, valores, logros, categorías, perfil del cuerpo técnico, características de la piscina, contacto) sale de `.docs/Info.txt` y `.docs/portafolio los tiburones.pdf` que pasó el club — no hay texto inventado.
 
 ## Cómo replicar el navbar/footer en una página nueva
 
-Si el club pide más páginas (ej. `nosotros.html`, `contacto.html`), en cada una:
+Si el club pide más páginas, en cada una:
 
 1. Copiá el `<head>` de `index.html` (mismos `<link>` de CSS y fuentes).
 2. Poné `<div id="navbar-placeholder"></div>` justo después de abrir `<body>`.
@@ -41,27 +46,28 @@ Si el club pide más páginas (ej. `nosotros.html`, `contacto.html`), en cada un
    <script src="js/main.js"></script>
    ```
 
-`main.js` hace el resto (inyecta el HTML, activa el menú hamburguesa, etc.). No hay que tocar nada más.
+`main.js` hace el resto (inyecta el HTML, activa el menú hamburguesa, arranca los carruseles, etc.).
 
 ## Paleta de colores y tipografía
 
-Todo vive en `css/variables.css` como custom properties (`--color-...`, `--font-...`). En el resto de los CSS **no hay colores ni fuentes hardcodeadas**, todo usa `var(--...)`. Cuando el cliente confirme su marca:
+Todo vive en `css/variables.css` como custom properties. Es la paleta **oficial** que pasó el club (`.docs/Copia de Paleta de colores.png`): navy `#0d043b`, azul `#22557a`, slate `#2b3d55`, rojo `#f32c43`. En el resto de los CSS no hay colores hardcodeados, todo usa `var(--...)` — si el club ajusta algún color, se cambia una sola vez acá y se actualiza todo el sitio.
 
-- Si tiene logo/colores propios: cambiar los valores en `variables.css` y se actualiza todo el sitio solo.
-- Si no tiene: esta paleta azul/turquesa queda como propuesta de diseño.
+## Íconos
 
-## Sobre las imágenes (IMPORTANTE antes de presentar/publicar)
+No se usan emojis en ningún lado: todos los íconos son SVG en línea, estilo trazo simple (droplet, target, trophy, medalla, WhatsApp, Facebook, Instagram, etc.), coloreados con `currentColor` para heredar el color de marca automáticamente.
 
-Las fotos de `assets/images/` son de **Wikimedia Commons** (licencia Creative Commons, uso libre), puestas como placeholder para mostrar la idea de diseño:
+## Sobre las imágenes
 
-- `hero-shark.jpg`, `about-shark.jpg`, `shark-closeup.jpg` — tiburones (temática del club).
-- `pool-olympic.jpg`, `pool-indoor.jpg`, `pool-training.jpg` — piletas de referencia.
+Todas las fotos de `assets/images/` son del club (de `.docs/fotos/` y `.docs/Logo.jpeg`), redimensionadas y comprimidas para web:
 
-**Antes de la versión final, reemplazar por fotos reales del club** (instalaciones, alumnos, logo). Estas imágenes ya están comprimidas y livianas, pero no son del club.
+- `logo.png` / `favicon.png` — escudo oficial del club.
+- `hero-team.jpg` — foto de portada del equipo en la piscina olímpica.
+- `carousel-1.jpg` a `carousel-5.jpg` — carrusel de la sección Nosotros (medallas, banderas, entrenador).
+- `coach-team.jpg` — foto grupal con el cuerpo técnico, sección "Cuerpo técnico".
+- `gallery-1.jpg` a `gallery-4.jpg` — galería de la sección Instalaciones.
 
-## Pendientes para cerrar con el cliente
+## Pendientes para cerrar con el club
 
-- Textos reales de Misión y Visión (buscar `TODO` en `index.html`).
-- Logo del club (hoy se usa el emoji 🦈 como placeholder en navbar/footer).
-- Datos reales de contacto, dirección y horarios (los actuales son de ejemplo).
-- El formulario de contacto no envía nada todavía: hay que conectarlo a un servicio (Formspree, EmailJS) o a un backend propio.
+- El formulario de contacto no envía nada todavía: si lo quieren mantener además del botón de WhatsApp, hay que conectarlo a un servicio (Formspree, EmailJS) o a un backend propio.
+- Confirmar que el número de WhatsApp (320 741 2254) y los links de Facebook/Instagram sean los vigentes.
+- Si el club consigue el logo en formato vectorial (SVG/AI) o con fondo transparente, reemplazar `logo.png`/`favicon.png` mejora la nitidez en pantallas grandes.

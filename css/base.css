@@ -47,6 +47,16 @@ p {
   background: var(--color-bg-alt);
 }
 
+/* Para acercar dos secciones que son temáticamente una sola unidad
+   (ej: Nosotros -> Misión/Visión/Valores) */
+.section--tight-bottom {
+  padding-bottom: var(--space-lg);
+}
+
+.section--tight-top {
+  padding-top: var(--space-lg);
+}
+
 .section-heading {
   max-width: 640px;
   margin-inline: auto;

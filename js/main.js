@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupNavbarScroll();
   setupScrollReveal();
   setFooterYear();
+  setupCarousels();
 });
 
 function injectComponents() {
@@ -85,4 +86,70 @@ function setFooterYear() {
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+}
+
+function setupCarousels() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll(".carousel").forEach((carousel) => {
+    const track = carousel.querySelector(".carousel__track");
+    const slides = Array.from(carousel.querySelectorAll(".carousel__slide"));
+    const dotsWrap = carousel.querySelector(".carousel__dots");
+    const prevBtn = carousel.querySelector(".carousel__btn--prev");
+    const nextBtn = carousel.querySelector(".carousel__btn--next");
+    if (!track || slides.length < 2) return;
+
+    let index = 0;
+    let timer = null;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "carousel__dot";
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-label", `Ir a la foto ${i + 1}`);
+      dot.addEventListener("click", () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function render() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+    }
+
+    function goTo(i) {
+      index = (i + slides.length) % slides.length;
+      render();
+    }
+
+    function next() {
+      goTo(index + 1);
+    }
+
+    function prev() {
+      goTo(index - 1);
+    }
+
+    function startAutoplay() {
+      if (reduceMotion) return;
+      stopAutoplay();
+      timer = setInterval(next, 5000);
+    }
+
+    function stopAutoplay() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    nextBtn?.addEventListener("click", () => { next(); startAutoplay(); });
+    prevBtn?.addEventListener("click", () => { prev(); startAutoplay(); });
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+    carousel.addEventListener("focusin", stopAutoplay);
+    carousel.addEventListener("focusout", startAutoplay);
+
+    render();
+    startAutoplay();
+  });
 }

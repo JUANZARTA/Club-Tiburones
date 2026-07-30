@@ -2,17 +2,17 @@
    VARIABLES GLOBALES — Club Tiburones
    Única fuente de verdad para colores, tipografía, espaciados y efectos.
    No hardcodear valores en otros archivos: siempre usar var(--...).
+   Paleta oficial del club (.docs/Copia de Paleta de colores.png):
+   navy #0d043b · azul #22557a · slate #2b3d55 · rojo #f32c43 · hover #2993e0
    ========================================================================== */
 
 :root {
-  /* ---- Paleta de color: azules de agua profunda + acento turquesa ---- */
-  --color-primary-900: #03045e;   /* azul noche, fondos oscuros / footer */
-  --color-primary-700: #023e7d;   /* azul principal oscuro, navbar/hero */
-  --color-primary-500: #0466c8;   /* azul principal, botones, links */
-  --color-primary-300: #48cae4;   /* azul claro, hover / detalles */
-  --color-accent-500: #00b4d8;    /* turquesa, acentos y CTAs secundarios */
-  --color-accent-300: #90e0ef;    /* turquesa claro, fondos suaves */
-  --color-accent-100: #caf0f8;    /* celeste muy claro, fondos de sección */
+  /* ---- Paleta de marca (oficial, no modificar sin aprobación del club) ---- */
+  --color-navy: #0d043b;      /* fondo hero/navbar/footer */
+  --color-blue: #22557a;      /* azul principal, links, botones */
+  --color-slate: #2b3d55;     /* azul grisáceo, base de botones */
+  --color-red: #f32c43;       /* rojo de marca, acentos y CTA */
+  --color-sky: #2993e0;       /* azul claro, hover de botones */
 
   --color-white: #ffffff;
   --color-black: #001219;
@@ -20,27 +20,33 @@
   --color-gray-900: #1b263b;      /* texto principal */
   --color-gray-600: #52606d;      /* texto secundario */
   --color-gray-300: #d9e2ec;      /* bordes, separadores */
-  --color-gray-100: #f4f9fc;      /* fondo general de la página */
 
   --color-success: #2dd881;
   --color-warning: #ffb703;
 
   /* Alias semánticos: usar estos en el resto del CSS */
-  --color-bg: var(--color-gray-100);
-  --color-bg-alt: var(--color-accent-100);
+  --color-bg: var(--color-white);
+  --color-bg-alt: #d9ebf5;        /* celeste de agua, derivado del azul de marca */
   --color-surface: var(--color-white);
   --color-text: var(--color-gray-900);
   --color-text-muted: var(--color-gray-600);
   --color-border: var(--color-gray-300);
 
-  --color-brand: var(--color-primary-500);
-  --color-brand-dark: var(--color-primary-700);
-  --color-brand-darker: var(--color-primary-900);
-  --color-brand-accent: var(--color-accent-500);
+  --color-brand: var(--color-blue);
+  --color-brand-dark: var(--color-slate);
+  --color-brand-darker: var(--color-navy);
+  --color-brand-accent: var(--color-red);
+
+  /* Texto sobre fondos oscuros (navy): navbar, footer, hero */
+  --color-on-dark: rgba(255, 255, 255, 0.92);
+  --color-on-dark-muted: rgba(255, 255, 255, 0.68);
+
+  /* Degradé de botones, tal cual lo define la guía de marca del club */
+  --gradient-btn: linear-gradient(135deg, var(--color-slate) 0%, var(--color-blue) 50%, var(--color-slate) 100%);
+  --gradient-btn-hover: linear-gradient(135deg, var(--color-blue) 0%, var(--color-sky) 50%, var(--color-blue) 100%);
 
   /* Degradé "agua" reutilizable para hero / secciones oscuras */
-  --gradient-ocean: linear-gradient(160deg, var(--color-primary-900) 0%, var(--color-primary-700) 45%, var(--color-primary-500) 100%);
-  --gradient-surface: linear-gradient(180deg, var(--color-accent-100) 0%, var(--color-white) 100%);
+  --gradient-ocean: linear-gradient(160deg, var(--color-navy) 0%, var(--color-slate) 55%, var(--color-blue) 100%);
 
   /* ---- Tipografía ---- */
   --font-heading: "Poppins", "Segoe UI", sans-serif;
@@ -80,9 +86,9 @@
   --radius-lg: 28px;
   --radius-full: 999px;
 
-  --shadow-sm: 0 2px 8px rgba(2, 62, 125, 0.08);
-  --shadow-md: 0 12px 32px rgba(2, 62, 125, 0.14);
-  --shadow-lg: 0 20px 48px rgba(1, 34, 25, 0.22);
+  --shadow-sm: 0 2px 8px rgba(13, 4, 59, 0.08);
+  --shadow-md: 0 12px 32px rgba(13, 4, 59, 0.16);
+  --shadow-lg: 0 20px 48px rgba(13, 4, 59, 0.24);
 
   --transition-fast: 0.2s ease;
   --transition-base: 0.35s ease;
