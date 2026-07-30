@@ -25,6 +25,10 @@
   margin-top: var(--space-sm);
 }
 
+.page-header__cta {
+  margin-top: var(--space-lg);
+}
+
 /* ---- Hero ---- */
 .hero {
   position: relative;
