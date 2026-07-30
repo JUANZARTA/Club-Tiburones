@@ -57,6 +57,11 @@ p {
   padding-top: var(--space-lg);
 }
 
+/* Para dar más aire antes de una ola/transición de color */
+.section--roomy-bottom {
+  padding-bottom: calc(var(--space-2xl) + var(--space-lg));
+}
+
 .section-heading {
   max-width: 640px;
   margin-inline: auto;

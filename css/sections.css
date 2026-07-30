@@ -47,7 +47,7 @@
   position: relative;
   z-index: 1;
   max-width: 640px;
-  margin-bottom: clamp(4rem, 12vh, 9rem);
+  margin-bottom: clamp(8rem, 22vh, 16rem);
 }
 
 .hero .badge {
