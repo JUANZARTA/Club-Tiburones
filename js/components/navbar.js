@@ -21,7 +21,6 @@ const NAVBAR_HTML = `
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#logros">Logros</a></li>
       <li><a href="#categorias">Categorías</a></li>
-      <li><a href="#instalaciones">Instalaciones</a></li>
       <li><a href="html/galeria.html">Galería</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
