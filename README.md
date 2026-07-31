@@ -12,6 +12,7 @@ Doble clic en `index.html` y se abre en el navegador. No necesita servidor ni in
 index.html              -> página principal, con todas las secciones
 html/
   galeria.html          -> página con TODAS las fotos del club (galería completa)
+  calendario.html       -> próximos torneos (cards con cuenta regresiva real) + sección Noticias (vacía por ahora)
 css/
   variables.css         -> paleta oficial del club y tipografía (ÚNICA fuente de verdad)
   reset.css             -> normalización básica entre navegadores
@@ -38,10 +39,18 @@ Contacto no tiene formulario: es una tarjeta centrada (fondo celeste, sobre secc
 
 ### Páginas dentro de `html/`
 
-`galeria.html` vive en su propia carpeta porque el club pidió páginas internas separadas del home. Ojo si agregás otra página ahí:
+`galeria.html` y `calendario.html` viven en su propia carpeta porque el club pidió páginas internas separadas del home. Ojo si agregás otra página ahí:
 
 - Todos sus `<link>`/`<script src>` e imágenes (`assets/...`) llevan `../` adelante (`../css/variables.css`, `../assets/images/...`).
-- El navbar y el footer son el mismo componente (`NAVBAR_HTML`/`FOOTER_HTML`) en todo el sitio, escrito pensando que vive en la raíz. `main.js` (función `fixCrossPageAnchors`) detecta si la página está dentro de `/html/` y ahí sí corrige automáticamente los links de sección (`#nosotros` → `../index.html#nosotros`), el logo y el link de Galería. No hay que tocar nada a mano.
+- El navbar y el footer son el mismo componente (`NAVBAR_HTML`/`FOOTER_HTML`) en todo el sitio, escrito pensando que vive en la raíz, con links tipo `html/loquesea.html`. `main.js` (función `fixCrossPageAnchors`) detecta si la página está dentro de `/html/` y ahí sí corrige automáticamente los links de sección (`#nosotros` → `../index.html#nosotros`), el logo y cualquier link `html/...` (le saca el prefijo, porque ya estás en esa carpeta). No hay que tocar nada a mano: cualquier página nueva en `html/` que uses el mismo patrón de rutas queda resuelta sola.
+
+### Calendario de torneos
+
+`html/calendario.html` muestra los próximos torneos en los que compite Tiburones, agrupados por torneo (no por categoría) para no repetir tarjetas. Cada categoría tiene su fecha de cierre de inscripción y la fecha/hora de la primera jornada. El texto "Faltan X días" **no está hardcodeado**: `main.js` (función `setupCountdowns`) lo calcula en el momento comparando la fecha de hoy contra el atributo `data-countdown="AAAA-MM-DDTHH:MM:00"` de cada pill, así nunca queda desactualizado. Si pasó la fecha, dice "Inscripciones cerradas" solo.
+
+Para cargar un torneo nuevo: copiar un `<article class="event-card">` completo, cambiar el logo/nombre del club anfitrión, el nombre del torneo, y las categorías con sus fechas.
+
+La sección "Noticias" (al final de esa misma página, `id="noticias"`) es un placeholder a propósito — el club todavía no tiene contenido para esa sección.
 
 Todo el contenido (historia, misión, visión, valores, logros, categorías, perfil del cuerpo técnico, características de la piscina, contacto) sale de `.docs/Info.txt` y `.docs/portafolio los tiburones.pdf` que pasó el club — no hay texto inventado.
 
@@ -81,6 +90,8 @@ Todas las fotos de `assets/images/` son del club (de `.docs/fotos/` y `.docs/Log
 - `galeria-1.jpg` a `galeria-16.jpg` — grid "Todas las fotos" de `html/galeria.html`. `galeria-1.jpg` (entrenador con nadador, trofeo y medallas) va destacada más grande a propósito (`photo-grid__item--featured`), a pedido del club.
 
 `html/galeria.html` es la única página que muestra todas las fotos juntas (reutiliza todos los archivos de arriba). De las fotos que fue mandando el club en `.docs/fotos/`, quedó **una sola sin usar**: `foto (10).jpeg`, que en realidad es una captura de pantalla borrosa de un logo personal, no una foto del club.
+
+- `logo-delfines.png`, `logo-esturiones.png` — escudos de los clubes anfitriones de los torneos en `html/calendario.html` (no son del Club Tiburones, son de los otros clubes organizadores).
 
 ## Pendientes para cerrar con el club
 

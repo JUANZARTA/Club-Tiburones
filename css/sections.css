@@ -314,3 +314,151 @@
     align-items: stretch;
   }
 }
+
+/* ---- Calendario: card de torneo ---- */
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.event-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.event-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--color-bg-alt);
+}
+
+.event-card__logo {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.event-card__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
+
+.event-card__host {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+
+.event-card__header h3 {
+  font-size: var(--fs-md);
+  margin-top: 2px;
+}
+
+.event-card__categories {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card__category {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.event-card__cat-name {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-semibold);
+  color: var(--color-brand-darker);
+  min-width: 140px;
+}
+
+.event-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.event-card__meta li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.event-card__meta .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-brand);
+  flex-shrink: 0;
+}
+
+.countdown-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+  background: rgba(45, 216, 129, 0.15);
+  color: #1f9d5f;
+}
+
+.countdown-pill--soon {
+  background: rgba(255, 183, 3, 0.18);
+  color: #b3760a;
+}
+
+.countdown-pill--closed {
+  background: var(--color-gray-300);
+  color: var(--color-text-muted);
+}
+
+/* ---- Noticias: placeholder ---- */
+.noticias-placeholder {
+  max-width: 480px;
+  margin-inline: auto;
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  border: 1.5px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.noticias-placeholder .icon {
+  width: 40px;
+  height: 40px;
+  color: var(--color-brand);
+  margin-bottom: var(--space-md);
+}
+
+.noticias-placeholder p {
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .event-card__category {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

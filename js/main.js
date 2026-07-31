@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupScrollReveal();
   setFooterYear();
   setupCarousels();
+  setupCountdowns();
 });
 
 function injectComponents() {
@@ -28,12 +29,14 @@ function injectComponents() {
 
 /* El navbar/footer son el mismo componente (NAVBAR_HTML/FOOTER_HTML) en
    todas las páginas del sitio, y están escritos como si vivieran en la
-   raíz junto a index.html: rutas tipo "assets/..." y anclas tipo "#nosotros".
-   Eso funciona tal cual en index.html. Para cualquier página adentro de
-   /html/ (como galeria.html) hay que corregir esas rutas relativas:
-   - "#seccion"        -> "../index.html#seccion" (volver al home y bajar)
-   - "assets/..."       -> "../assets/..."
-   - "html/galeria.html" -> "galeria.html" (ya estamos ahí, es la misma carpeta) */
+   raíz junto a index.html: rutas tipo "assets/..." y anclas tipo "#nosotros",
+   y los links a páginas internas tipo "html/galeria.html" o
+   "html/calendario.html#noticias". Eso funciona tal cual en index.html.
+   Para cualquier página adentro de /html/ (galeria.html, calendario.html,
+   la que sea) hay que corregir esas rutas relativas:
+   - "#seccion"          -> "../index.html#seccion" (volver al home y bajar)
+   - "assets/..."         -> "../assets/..."
+   - "html/loquesea.html" -> "loquesea.html" (ya estamos en esa carpeta) */
 function fixCrossPageAnchors() {
   const inSubfolder = /\/html\//.test(location.pathname);
   if (!inSubfolder) return;
@@ -50,8 +53,8 @@ function fixCrossPageAnchors() {
       img.setAttribute("src", "../" + img.getAttribute("src"));
     });
 
-    root.querySelectorAll('a[href="html/galeria.html"]').forEach((link) => {
-      link.setAttribute("href", "galeria.html");
+    root.querySelectorAll('a[href^="html/"]').forEach((link) => {
+      link.setAttribute("href", link.getAttribute("href").replace(/^html\//, ""));
     });
   });
 }
@@ -182,5 +185,34 @@ function setupCarousels() {
 
     render();
     startAutoplay();
+  });
+}
+
+/* Calcula "Faltan X días" en base a la fecha de hoy, no a un número fijo
+   escrito a mano (así nunca queda desactualizado). Cada pill trae la fecha
+   límite en data-countdown, formato ISO: "2026-08-09T23:59:00". */
+function setupCountdowns() {
+  const pills = document.querySelectorAll("[data-countdown]");
+  if (!pills.length) return;
+
+  const now = new Date();
+
+  pills.forEach((pill) => {
+    const deadline = new Date(pill.dataset.countdown);
+    const msPerDay = 1000 * 60 * 60 * 24;
+    const daysLeft = Math.ceil((deadline - now) / msPerDay);
+
+    pill.classList.remove("countdown-pill--soon", "countdown-pill--closed");
+
+    if (daysLeft < 0) {
+      pill.textContent = "Inscripciones cerradas";
+      pill.classList.add("countdown-pill--closed");
+    } else if (daysLeft === 0) {
+      pill.textContent = "Cierra hoy";
+      pill.classList.add("countdown-pill--soon");
+    } else {
+      pill.textContent = daysLeft === 1 ? "Falta 1 día" : `Faltan ${daysLeft} días`;
+      if (daysLeft <= 7) pill.classList.add("countdown-pill--soon");
+    }
   });
 }

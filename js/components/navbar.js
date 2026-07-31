@@ -22,7 +22,7 @@ const NAVBAR_HTML = `
       <li><a href="#logros">Logros</a></li>
       <li><a href="#categorias">Categorías</a></li>
       <li><a href="html/galeria.html">Galería</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="html/calendario.html">Calendario</a></li>
     </ul>
 
     <a href="https://wa.me/573207412254" target="_blank" rel="noopener" class="btn btn--accent navbar__cta">
