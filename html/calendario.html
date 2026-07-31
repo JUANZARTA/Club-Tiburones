@@ -22,6 +22,8 @@
 </head>
 <body>
 
+  <div id="fb-root"></div>
+
   <div id="navbar-placeholder"></div>
 
   <main>
@@ -156,12 +158,23 @@
         <div class="section-heading" data-reveal>
           <span class="eyebrow">Noticias</span>
           <h2>Novedades del club</h2>
-          <p>Muy pronto vas a encontrar acá las noticias y novedades de Tiburones.</p>
+          <p>Lo último que compartimos en Facebook. Se actualiza solo, no hace falta volver a esta página para verlo.</p>
         </div>
 
-        <div class="noticias-placeholder" data-reveal>
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h13a2 2 0 0 1 2 2v13a1 1 0 0 1-1 1H6a2 2 0 0 1-2-2V4Z"/><path d="M19 8h1a1 1 0 0 1 1 1v9a2 2 0 0 1-2 2"/><path d="M8 8h6M8 12h6M8 16h4"/></svg>
-          <p>Estamos preparando esta sección. Volvé pronto.</p>
+        <div class="facebook-feed" data-reveal>
+          <div class="fb-page"
+            data-href="https://www.facebook.com/ClubDeporTiburones"
+            data-tabs="timeline"
+            data-width=""
+            data-height="600"
+            data-small-header="false"
+            data-adapt-container-width="true"
+            data-hide-cover="false"
+            data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/ClubDeporTiburones" class="fb-xfbml-parse-ignore">
+              <a href="https://www.facebook.com/ClubDeporTiburones">Club Deportivo de Natación Tiburones</a>
+            </blockquote>
+          </div>
         </div>
       </div>
     </section>
@@ -174,5 +187,8 @@
   <script src="../js/components/navbar.js"></script>
   <script src="../js/components/footer.js"></script>
   <script src="../js/main.js"></script>
+
+  <!-- SDK de Facebook: alimenta el feed de la sección Noticias -->
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v19.0"></script>
 </body>
 </html>
