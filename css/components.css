@@ -307,6 +307,13 @@
   box-shadow: 0 16px 36px rgba(var(--color-red-rgb), 0.45);
 }
 
+@media (max-width: 600px) {
+  .whatsapp-fab {
+    right: var(--space-sm);
+    bottom: var(--space-sm);
+  }
+}
+
 /* ---- Badge / etiqueta pequeña ---- */
 .badge {
   display: inline-block;

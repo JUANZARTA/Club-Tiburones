@@ -29,32 +29,36 @@ function injectComponents() {
 
 /* El navbar/footer son el mismo componente (NAVBAR_HTML/FOOTER_HTML) en
    todas las páginas del sitio, y están escritos como si vivieran en la
-   raíz junto a index.html: rutas tipo "assets/..." y anclas tipo "#nosotros",
-   y los links a páginas internas tipo "html/galeria.html" o
-   "html/calendario.html#noticias". Eso funciona tal cual en index.html.
-   Para cualquier página adentro de /html/ (galeria.html, calendario.html,
-   la que sea) hay que corregir esas rutas relativas:
-   - "#seccion"          -> "../index.html#seccion" (volver al home y bajar)
-   - "assets/..."         -> "../assets/..."
-   - "html/loquesea.html" -> "loquesea.html" (ya estamos en esa carpeta) */
+   raíz junto a index.html: rutas tipo "assets/...", anclas tipo "#nosotros"
+   y links a páginas internas tipo "galeria/" o "calendario/#noticias".
+   Eso funciona tal cual en index.html.
+
+   Cada página interna (galeria/index.html, calendario/index.html, la que
+   sea) vive UN nivel más abajo, en su propia carpeta — por eso lleva
+   <body data-subpage> — y ahí hay que anteponerle "../" a todo lo que sea
+   relativo a la raíz:
+   - "#seccion"   -> "../#seccion"   (vuelve al home sin mostrar index.html)
+   - "assets/..." -> "../assets/..."
+   - "galeria/"   -> "../galeria/"   (cualquier link interno, incluido a
+                                       sí misma: solo pega la vuelta, no
+                                       rompe nada)
+   Los links externos (http, mailto, tel) no se tocan. */
 function fixCrossPageAnchors() {
-  const inSubfolder = /\/html\//.test(location.pathname);
-  if (!inSubfolder) return;
+  const isSubpage = document.body.hasAttribute("data-subpage");
+  if (!isSubpage) return;
 
   ["#navbar-placeholder", "#footer-placeholder"].forEach((rootSelector) => {
     const root = document.querySelector(rootSelector);
     if (!root) return;
 
-    root.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.setAttribute("href", "../index.html" + link.getAttribute("href"));
+    root.querySelectorAll("a[href]").forEach((link) => {
+      const href = link.getAttribute("href");
+      if (/^(https?:|mailto:|tel:)/.test(href)) return;
+      link.setAttribute("href", "../" + href);
     });
 
     root.querySelectorAll('img[src^="assets/"]').forEach((img) => {
       img.setAttribute("src", "../" + img.getAttribute("src"));
-    });
-
-    root.querySelectorAll('a[href^="html/"]').forEach((link) => {
-      link.setAttribute("href", link.getAttribute("href").replace(/^html\//, ""));
     });
   });
 }
