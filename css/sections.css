@@ -435,7 +435,10 @@
   color: var(--color-text-muted);
 }
 
-/* ---- Noticias: feed de Facebook ---- */
+/* ---- Noticias: feed de Facebook ----
+   El plugin de Facebook tiene un ancho máximo real de contenido (~500px):
+   pedirle más solo deja espacio en blanco. Por eso acá centramos la caja
+   en vez de estirarla. */
 .facebook-feed {
   display: flex;
   justify-content: center;
