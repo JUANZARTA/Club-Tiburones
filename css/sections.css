@@ -269,30 +269,11 @@
   transform: scale(1.06);
 }
 
-/* ---- Contacto ---- */
-.contact-card {
-  max-width: 760px;
-  margin-inline: auto;
-  text-align: center;
-  background: var(--color-bg-alt);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  padding: var(--space-2xl) var(--space-xl);
-}
-
-.contact-card__cta {
-  margin-top: var(--space-lg);
-}
-
 /* ---- Responsive ---- */
 @media (max-width: 900px) {
   .about,
   .staff {
     grid-template-columns: 1fr;
-  }
-
-  .contact-card {
-    padding: var(--space-xl) var(--space-lg);
   }
 
   .gallery {
@@ -457,4 +438,45 @@
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+/* ---- Plan Padrino ---- */
+.padrino {
+  max-width: 640px;
+  margin-inline: auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.padrino__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-md);
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  color: var(--color-brand);
+}
+
+.padrino__icon .icon {
+  width: 30px;
+  height: 30px;
+}
+
+.padrino p {
+  color: var(--color-text-muted);
+  margin-top: var(--space-sm);
+}
+
+.padrino__closing {
+  color: var(--color-brand-darker);
+  font-weight: var(--fw-semibold);
+  margin-top: var(--space-lg);
+}
+
+.padrino .btn {
+  margin-top: var(--space-lg);
 }
