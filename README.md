@@ -34,7 +34,7 @@ Inicio → Nosotros (carrusel + tarjeta de estadísticas) → Misión/Visión/Va
 
 `index.html` ya no tiene secciones propias de "Instalaciones" ni "Galería": las fotos viven todas en `html/galeria.html` (el botón "Galería" del hero y el link del navbar/footer llevan ahí). Esa página tiene su propia sección "Instalaciones" (texto de la piscina + 4 fotos) y después el grid con el resto de las fotos.
 
-Contacto no tiene formulario: es una tarjeta centrada (fondo celeste, sobre sección blanca) con el botón de WhatsApp como acción principal, y abajo la ubicación/redes en 3 columnas parejas — así lo pidió el club, para no duplicar el canal de contacto y para que no se viera desordenado.
+Contacto no tiene formulario: es una tarjeta centrada (fondo celeste, sobre sección blanca) con el botón de WhatsApp como única acción — la ubicación y las redes están en el footer, no repetidas ahí. También hay un botón flotante de WhatsApp (esquina inferior derecha) presente en todas las páginas.
 
 ### Páginas dentro de `html/`
 
@@ -78,9 +78,9 @@ Todas las fotos de `assets/images/` son del club (de `.docs/fotos/` y `.docs/Log
 - `carousel-1.jpg` a `carousel-5.jpg` — carrusel de la sección Nosotros (medallas, banderas, entrenador).
 - `coach-team.jpg` — foto grupal con el cuerpo técnico, sección "Cuerpo técnico".
 - `gallery-1.jpg` a `gallery-4.jpg` — sección "Instalaciones" dentro de `html/galeria.html`.
-- `galeria-1.jpg` a `galeria-11.jpg` — grid "Todas las fotos" de `html/galeria.html`. `galeria-1.jpg` (entrenador con nadador, trofeo y medallas) va destacada más grande a propósito (`photo-grid__item--featured`), a pedido del club.
+- `galeria-1.jpg` a `galeria-13.jpg` — grid "Todas las fotos" de `html/galeria.html`. `galeria-1.jpg` (entrenador con nadador, trofeo y medallas) va destacada más grande a propósito (`photo-grid__item--featured`), a pedido del club.
 
-`html/galeria.html` es la única página que muestra las 22 fotos juntas (reutiliza todos los archivos de arriba). De las fotos originales en `.docs/fotos/`, quedó **una sola sin usar**: `foto (10).jpeg`, que en realidad es una captura de pantalla borrosa de un logo personal, no una foto del club.
+`html/galeria.html` es la única página que muestra todas las fotos juntas (reutiliza todos los archivos de arriba). De las fotos que fue mandando el club en `.docs/fotos/`, quedó **una sola sin usar**: `foto (10).jpeg`, que en realidad es una captura de pantalla borrosa de un logo personal, no una foto del club.
 
 ## Pendientes para cerrar con el club
 
