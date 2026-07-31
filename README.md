@@ -78,7 +78,7 @@ Todas las fotos de `assets/images/` son del club (de `.docs/fotos/` y `.docs/Log
 - `carousel-1.jpg` a `carousel-5.jpg` — carrusel de la sección Nosotros (medallas, banderas, entrenador).
 - `coach-team.jpg` — foto grupal con el cuerpo técnico, sección "Cuerpo técnico".
 - `gallery-1.jpg` a `gallery-4.jpg` — sección "Instalaciones" dentro de `html/galeria.html`.
-- `galeria-1.jpg` a `galeria-15.jpg` — grid "Todas las fotos" de `html/galeria.html`. `galeria-1.jpg` (entrenador con nadador, trofeo y medallas) va destacada más grande a propósito (`photo-grid__item--featured`), a pedido del club.
+- `galeria-1.jpg` a `galeria-16.jpg` — grid "Todas las fotos" de `html/galeria.html`. `galeria-1.jpg` (entrenador con nadador, trofeo y medallas) va destacada más grande a propósito (`photo-grid__item--featured`), a pedido del club.
 
 `html/galeria.html` es la única página que muestra todas las fotos juntas (reutiliza todos los archivos de arriba). De las fotos que fue mandando el club en `.docs/fotos/`, quedó **una sola sin usar**: `foto (10).jpeg`, que en realidad es una captura de pantalla borrosa de un logo personal, no una foto del club.
 
