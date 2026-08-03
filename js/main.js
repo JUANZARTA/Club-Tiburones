@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setFooterYear();
   setupCarousels();
   setupCountdowns();
+  setupLightbox();
 });
 
 function injectComponents() {
@@ -218,5 +219,81 @@ function setupCountdowns() {
       pill.textContent = daysLeft === 1 ? "Falta 1 día" : `Faltan ${daysLeft} días`;
       if (daysLeft <= 7) pill.classList.add("countdown-pill--soon");
     }
+  });
+}
+
+/* Lightbox: cualquier foto dentro de un contenedor .lightbox-gallery
+   (carrusel, galería, etc.) se puede abrir en tamaño completo. Si esa
+   galería tiene más de una foto, aparecen flechas para pasar entre ellas.
+   El overlay se arma una sola vez por JS y se reutiliza para todas. */
+function setupLightbox() {
+  const galleries = document.querySelectorAll(".lightbox-gallery");
+  if (!galleries.length) return;
+
+  const overlay = document.createElement("div");
+  overlay.className = "lightbox";
+  overlay.innerHTML = `
+    <button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="Foto anterior">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 5 8 12 15 19"/></svg>
+    </button>
+    <img class="lightbox__img" src="" alt="">
+    <button type="button" class="lightbox__nav lightbox__nav--next" aria-label="Foto siguiente">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 5 16 12 9 19"/></svg>
+    </button>
+    <button type="button" class="lightbox__close" aria-label="Cerrar">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  `;
+  document.body.appendChild(overlay);
+
+  const imgEl = overlay.querySelector(".lightbox__img");
+  const prevBtn = overlay.querySelector(".lightbox__nav--prev");
+  const nextBtn = overlay.querySelector(".lightbox__nav--next");
+
+  let currentGroup = [];
+  let currentIndex = 0;
+
+  function show(index) {
+    currentIndex = (index + currentGroup.length) % currentGroup.length;
+    const img = currentGroup[currentIndex];
+    imgEl.src = img.currentSrc || img.src;
+    imgEl.alt = img.alt || "";
+    const hasMultiple = currentGroup.length > 1;
+    prevBtn.style.display = hasMultiple ? "flex" : "none";
+    nextBtn.style.display = hasMultiple ? "flex" : "none";
+  }
+
+  function open(group, index) {
+    currentGroup = group;
+    show(index);
+    overlay.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  }
+
+  function close() {
+    overlay.classList.remove("is-open");
+    document.body.style.overflow = "";
+  }
+
+  galleries.forEach((gallery) => {
+    const imgs = Array.from(gallery.querySelectorAll("img"));
+    imgs.forEach((img, i) => {
+      img.addEventListener("click", () => open(imgs, i));
+    });
+  });
+
+  prevBtn.addEventListener("click", () => show(currentIndex - 1));
+  nextBtn.addEventListener("click", () => show(currentIndex + 1));
+  overlay.querySelector(".lightbox__close").addEventListener("click", close);
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) close();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (!overlay.classList.contains("is-open")) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowRight") show(currentIndex + 1);
+    if (e.key === "ArrowLeft") show(currentIndex - 1);
   });
 }
